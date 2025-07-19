@@ -1,0 +1,106 @@
+*{
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+.page_container{
+  width: 100vw;
+  height: 100vh;
+  background: url("/32499956_7756629.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mainContent{
+  width: 100vw;
+  height: 100vh;
+  display: flex; 
+  flex-direction: column; 
+    background-color: rgba(0,0,0,0.2);
+}
+
+.navbar{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.options{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap : 30px
+}
+
+.orangeButton{
+  background-color: orangered;
+  border: none;
+  border-radius: 8px;
+ padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  min-height: 30px;
+}
+
+.contentBox{
+  width: 100vw;
+  flex : 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.col span{
+  color: orangered;
+}
+img {
+  width: 600px;
+}
+
+.auth{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttonContainer button{
+  width: 100px;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+}
+.active{
+  background-color: purple;
+}
+.unactive{
+  background:none;
+}
+
+form{
+  margin-top: 2rem;
+   display: flex;
+  flex-direction: column;
+}
+
+.form_container{
+  background-color: rgba(255,255,255,0.4);
+  padding: 50px;
+  border-radius: 20px;
+}
+
+form label{
+  color: black;
+}
+
+.form-control{
+  min-width: 300px;
+}
+
+.submit{
+  background-color: orangered;
+  color: white;
+  border: none;
+  min-width: 100px;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
