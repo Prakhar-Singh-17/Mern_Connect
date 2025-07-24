@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { axios } from "../axiosConfig";
-import { toast } from "react-toastify";
 
 
 export const AuthContext = createContext();
@@ -17,7 +16,6 @@ export const AuthProvider = ({ children }) => {
           setUser(res.data.user);
         }
       } catch (e) {
-       //toast.error("User not logged in");
         console.log(e);
       } finally {
         setLoading(false);

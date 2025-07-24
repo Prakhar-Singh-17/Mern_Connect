@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { axios } from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import LandingNav from "../components/LandingNav";
 
 export default function AuthenticationPage() {
   const navigate = useNavigate();
@@ -52,9 +53,11 @@ export default function AuthenticationPage() {
   }
 
   return (
-    <div className="page_container auth">
+    <div className="page_container">
+      <LandingNav/>
+    <div className="auth">
       <div className="form_container">
-        <div className="buttonContainer d-flex justify-content-center">
+        <div className="authButtonContainer d-flex justify-content-center">
           <button
             className={formState ? "unactive" : "active"}
             onClick={() => setFormState(0)}
@@ -126,5 +129,6 @@ export default function AuthenticationPage() {
         </form>
       </div>
     </div>
+     </div>
   );
 }

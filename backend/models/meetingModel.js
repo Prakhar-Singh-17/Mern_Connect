@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const meetingSchema = mongoose.Schema({
-    user_id : String,
+    user_id : {
+        type : mongoose.Schema.ObjectId,
+        ref : "User",
+    },
     meetingCode : {type : String , required : true},
     date : {
         type : String , 

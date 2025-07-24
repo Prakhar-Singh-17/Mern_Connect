@@ -1,11 +1,14 @@
 *{
   margin: 0;
   padding: 0;
-  color: white;
   font-family: "Montserrat", sans-serif;
 }
 
+
+
 .page_container{
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background: url("/32499956_7756629.jpg");
@@ -36,6 +39,7 @@
 .orangeButton{
   background-color: orangered;
   border: none;
+  color: white;
   border-radius: 8px;
  padding: 10px;
   font-family: "Montserrat", sans-serif;
@@ -59,9 +63,17 @@ img {
 
 .auth{
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.authButtonContainer button{
+  width: 100px;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
 }
 .buttonContainer button{
   width: 100px;
@@ -70,9 +82,11 @@ img {
   border-radius: 4px;
 }
 .active{
+  color: white;
   background-color: purple;
 }
 .unactive{
+  color: black;
   background:none;
 }
 
@@ -103,4 +117,36 @@ form label{
   min-width: 100px;
   border-radius: 4px;
   padding: 0.5rem;
+}
+
+.homeContainer{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.historyCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #007bff; 
+}
+
+.historyCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.historyCard p {
+  margin: 6px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.historyCard strong {
+  color: #555;
 }

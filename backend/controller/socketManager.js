@@ -33,14 +33,14 @@ export const connectToServer = (server) => {
             //     io.to(elem)
             // })
 
-            for (let a = 0; a < connections[path].length; a++) {
-                io.to(connections[path][a]).emit("user-joined", socket.id, connections[path])
+            for (let i = 0; i < connections[path].length; i++) {
+                io.to(connections[path][i]).emit("user-joined", socket.id, connections[path])
             }
 
             if (messages[path] !== undefined) {
-                for (let a = 0; a < messages[path].length; ++a) {
-                    io.to(socket.id).emit("chat-message", messages[path][a]['data'],
-                        messages[path][a]['sender'], messages[path][a]['socket-id-sender'])
+                for (let i = 0; i < messages[path].length; ++i) {
+                    io.to(socket.id).emit("chat-message", messages[path][i]['data'],
+                        messages[path][i]['sender'], messages[path][i]['socket-id-sender'])
                 }
             }
 
@@ -102,6 +102,7 @@ export const connectToServer = (server) => {
 
                         if (connections[key].length === 0) {
                             delete connections[key]
+                            delete messages[key]
                         }
                     }
                 }

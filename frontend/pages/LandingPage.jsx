@@ -1,20 +1,13 @@
 import { Link } from "react-router-dom"
+import LandingNav from "../components/LandingNav"
 
 export default function LandingPage() {
 
   return (
     <div className="page_container">
-      <div className="mainContent">
-      <div className="navbar">
-        <div>
-          <h1>Mern Connect</h1>
-        </div>
-        <div className="options">
-          <Link to={"/videocall"}><h4>Join as Guest</h4></Link>
-          <h4>Register</h4>
-           <Link to={"/auth"}><button className="orangeButton">Login</button></Link>
-        </div>
-      </div>
+      <div className="mainContent" style={{color: "white"}}>
+
+<LandingNav/>
       <div className="container contentBox">
         <div className="row">
           <div className="col  d-flex flex-column justify-content-center align-items-start gap-3">
@@ -23,7 +16,7 @@ export default function LandingPage() {
             <Link to={"/auth"}><button className="orangeButton">Get Started</button></Link>
           </div>
           <div className="col d-flex justify-content-center align-items-end">
-            <img src="/friends-family-making-videocall-catching-up.jpg" className="img-fluid"/>
+            <img src="/landing_page_img.jpg" className="img-fluid"/>
           </div>
         </div>
       </div>

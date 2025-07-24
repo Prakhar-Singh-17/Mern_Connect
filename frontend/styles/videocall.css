@@ -1,0 +1,125 @@
+.meetPreviewContainer{
+
+}
+
+.previewCard {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 5rem;
+}
+.previewHeader{
+  color: white;
+  padding: 2rem;
+   background: url("/32499956_7756629.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.inputPart{
+  display: flex;
+}
+
+.userVideo{
+  margin-top: 3rem;
+  width: auto;
+  height: 300px;
+  border-left: 2px solid orangered;
+  border-right: 2px solid orangered;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+
+.meetView{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(27, 27, 27);
+    position: relative;
+}
+
+.myView{
+    position: absolute;
+    bottom: 5vh;
+    left: 2vw;
+    border-radius: 20px;
+    object-fit: cover;
+    height: 250px;
+    width: 350px;
+}
+
+.bottomBar{
+    width: 100vw;
+    position: absolute;
+    bottom: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer{
+    z-index: 1;
+    display: flex;
+    border-radius: 10px;
+    gap: 2rem; 
+    background-color: black; 
+}
+
+.conferenceView{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    gap : 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.connectedUser{
+    flex: 1;
+    border-radius: 10px;
+    border : 1px solid white
+}
+
+.chatRoom {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  width: 350px;
+  min-width: 350px;
+  height: 95vh;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 2;
+}
+
+.chatHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.allMessages {
+  flex: 1;
+  overflow-y: auto;
+}
+
+
+.chatBox {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
