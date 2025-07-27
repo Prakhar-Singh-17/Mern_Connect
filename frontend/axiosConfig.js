@@ -4,8 +4,8 @@ const isLocal = window.location.hostname === "localhost";
 
 const api = axios.create({
   baseURL: isLocal 
-    ? "http://localhost:8080/user" 
-    : "https://tradetrackerbackend-ja6g.onrender.com",
+    ? import.meta.env.BACKEND_URL_LOCAL 
+    : import.meta.env.BACKEND_URL_PROD,
 });
 
 api.interceptors.request.use((config) => {

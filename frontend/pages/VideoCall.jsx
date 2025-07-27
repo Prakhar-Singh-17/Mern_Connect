@@ -18,7 +18,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/videocall.css";
 
-const server_url = "http://localhost:8080";
+const isLocal = window.location.hostname === "localhost";
+
+const server_url = isLocal? import.meta.env.BACKEND_URL_LOCAL : import.meta.env.BACKEND_URL_PROD;
 let connections = {};
 
 const peerConfigConnections = {
