@@ -265,9 +265,9 @@ export function VideoCall() {
   }
 
   let connectToSocketServer = () => {
+
     socketRef.current = io(server_url, {
-  transports: ['websocket'],
-  secure: true,
+  transports: ["websocket", "polling"],
   withCredentials: true,
 });
 
