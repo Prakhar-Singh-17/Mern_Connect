@@ -267,16 +267,13 @@ export function VideoCall() {
   let connectToSocketServer = () => {
 
      console.log("Socket.IO server initializing..."); 
-
-    socketRef.current = io(server_url, {
-  transports: ["websocket", "polling"],
-  withCredentials: true,
-});
+     
+socketRef.current = io.connect(server_url, { secure: false });
 
 
     socketRef.current.on("signal", gotMessageFromServer);
 
-    socketRef.current.on("connection", () => {
+    socketRef.current.on("connect", () => {
       socketRef.current.emit("join-call", window.location.href);
       console.log("windowlocationhref", window.location.href);
       socketIdRef.current = socketRef.current.id;
