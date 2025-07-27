@@ -8,7 +8,7 @@ let timeOnline = {}
 export const connectToServer = (server) => {
     const io = new Server(server, {
         cors: {
-            origin: "*",
+            origin: "https://mern-connect-d8he.onrender.com",
             methods: ["GET", "POST"],
             allowedHeaders: ["*"],
             credentials: true

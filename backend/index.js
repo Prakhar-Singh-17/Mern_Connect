@@ -15,7 +15,10 @@ const io = connectToServer(server);
 const port = process.env.port || 8080;
 const mongoUrl = process.env.MONGO_URL;
 
-app.use(cors());
+app.use(cors(
+    {origin: "https://mern-connect-d8he.onrender.com",
+  credentials: true,}
+));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
