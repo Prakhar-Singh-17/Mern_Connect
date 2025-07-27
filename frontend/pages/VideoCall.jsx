@@ -266,6 +266,8 @@ export function VideoCall() {
 
   let connectToSocketServer = () => {
 
+     console.log("Socket.IO server initializing..."); 
+     
     socketRef.current = io(server_url, {
   transports: ["websocket", "polling"],
   withCredentials: true,
