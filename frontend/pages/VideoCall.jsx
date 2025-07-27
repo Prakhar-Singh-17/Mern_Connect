@@ -41,7 +41,7 @@ export function VideoCall() {
   let [audio, setAudio] = useState(true);
   let [screen, setScreen] = useState(false);
 
-  let [showModal, setShowModal] = useState(true);
+  let [showModal, setShowModal] = useState(false);
 
   let [messages, setMessages] = useState([]);
   let [message, setMessage] = useState("");
@@ -265,7 +265,12 @@ export function VideoCall() {
   }
 
   let connectToSocketServer = () => {
-    socketRef.current = io.connect(server_url, { secure: false });
+    socketRef.current = io(server_url, {
+  transports: ['websocket'],
+  secure: true,
+  withCredentials: true,
+});
+
 
     socketRef.current.on("signal", gotMessageFromServer);
 
