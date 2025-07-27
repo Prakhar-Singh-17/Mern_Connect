@@ -14,6 +14,7 @@ export default function AuthenticationPage() {
   let [password, setPassword] = useState("");
 
   async function signup(e) {
+    console.log("Clicked for signup")
     e.preventDefault();
     axios.post("/signup",{fullname,username,password})
     .then((res)=>{
@@ -31,7 +32,7 @@ export default function AuthenticationPage() {
   }
 
   function login(e) {
-    console.log("Called");
+    console.log("Clicked for signup");
     e.preventDefault();
     axios.post("/login",{username,password})
     .then((res)=>{

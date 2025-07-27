@@ -20,7 +20,7 @@ import "../styles/videocall.css";
 
 const isLocal = window.location.hostname === "localhost";
 
-const server_url = isLocal? import.meta.env.BACKEND_URL_LOCAL : import.meta.env.BACKEND_URL_PROD;
+const server_url = isLocal? import.meta.env.VITE_BACKEND_URL_LOCAL : import.meta.env.VITE_BACKEND_URL_PROD;
 let connections = {};
 
 const peerConfigConnections = {

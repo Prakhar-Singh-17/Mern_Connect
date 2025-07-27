@@ -4,8 +4,8 @@ const isLocal = window.location.hostname === "localhost";
 
 const api = axios.create({
   baseURL: isLocal 
-    ? import.meta.env.BACKEND_URL_LOCAL 
-    : import.meta.env.BACKEND_URL_PROD,
+    ? import.meta.env.VITE_BACKEND_URL_LOCAL 
+    : import.meta.env.VITE_BACKEND_URL_PROD,
 });
 
 api.interceptors.request.use((config) => {
