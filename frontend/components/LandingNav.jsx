@@ -34,26 +34,26 @@ export default function LandingNav() {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style}>
-                  <h5 align="center">Please Input Meeting Code</h5>
+                  <h5 align="center" className="font-bold">Please Input Meeting Code</h5>
                   <TextField id="outlined-basic" label="Code" variant="outlined" value={meetingCode} onChange={e=>setMeetingCode(e.target.value)} />
-                  <div className="d-flex gap-4">
-                  <Button sx={{ flex: 1 }} variant="outlined" color="error" onClick={()=>setShowModal(false)}>Cancel</Button>
+                  <div className="flex gap-4">
+                  <Button  sx={{ flex: 1 }} variant="outlined" color="error" onClick={()=>setShowModal(false)}>Cancel</Button>
                   <Button sx={{ flex: 1 }} variant="contained" onClick={navigateToMeeting}>Join / Create</Button>
                   </div>
                 </Box>
               </Modal>
                 : null
       }
-    <div className="navbar"> 
-      <Link to="/" style={{textDecoration : "none"}}>
-        <h1 style={{color : "white"}}>Mern Connect</h1>
+    <div className="flex gap-3 flex-col md:flex-row justify-between items-center p-4 md:p-6"> 
+      <Link to="/" >
+        <h1 className="text-white font-medium text-3xl tracking-wide">Mern Connect</h1>
       </Link>
-      <div className="options">
-        <Link  style={{textDecoration: "none" , color : "white"}}>
-         <button className="btn btn-primary" style={{color:"white"}} onClick={()=>setShowModal(!showModal)}>Join as a Guest</button>
+      <div className="flex flex-row gap-5">
+        <Link >
+         <button className="bg-blue-700 hover:bg-blue-600 text-sm md:text-base p-1.5 text-white md:p-2.5 rounded-md" onClick={()=>setShowModal(!showModal)}>Join as a Guest</button>
         </Link>
         <Link to={"/auth"}>
-          <button className="btn" style={{color:"white" , backgroundColor : "orangered"}}>Login / Signup</button>
+          <button className="bg-[#ff4500] hover:bg-[#ff5b20] text-sm md:text-base p-1.5 text-white md:p-2.5 rounded-md" >Login / Signup</button>
         </Link>
       </div>
     </div>

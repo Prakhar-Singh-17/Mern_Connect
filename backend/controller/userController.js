@@ -32,7 +32,7 @@ export async function login(req, res) {
     if (!user) {
       res.json({ success: false, message: "Username does not exist" });
     }
-    const matchPass = bcrypt.compare(password, user.password);
+    const matchPass = await bcrypt.compare(password, user.password);
     if (!matchPass) {
       res.json({ success: false, message: "Wrong Password" });
     }
@@ -59,7 +59,7 @@ export async function getProfile(req, res) {
 
   const user = await User.findOne({ token });
   if (!user) return res.status(403).json({ success: false });
-
+ 
   res.json({
     success: true,
     user: { name: user.name, username: user.username },

@@ -1,6 +1,6 @@
+@import "tailwindcss";
+
 *{
-  margin: 0;
-  padding: 0;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .orangeButton{
-  background-color: orangered;
+  background-color: #ff4500;
   border: none;
   color: white;
   border-radius: 8px;
@@ -83,7 +83,7 @@ img {
 }
 .active{
   color: white;
-  background-color: purple;
+  background-color: #800080;
 }
 .unactive{
   color: black;

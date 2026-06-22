@@ -4,23 +4,18 @@ import LandingNav from "../components/LandingNav"
 export default function LandingPage() {
 
   return (
-    <div className="page_container">
-      <div className="mainContent" style={{color: "white"}}>
-
-<LandingNav/>
-      <div className="container contentBox">
-        <div className="row">
-          <div className="col  d-flex flex-column justify-content-center align-items-start gap-3">
-            <h1><span>Connect</span> with your Loved Ones</h1>
-            <h4>Cover a distance by Mern Connect</h4>
-            <Link to={"/auth"}><button className="orangeButton">Get Started</button></Link>
-          </div>
-          <div className="col d-flex justify-content-center align-items-end">
-            <img src="/landing_page_img.jpg" className="img-fluid"/>
-          </div>
-        </div>
+   <div className="page_container">
+    <LandingNav/>
+    <div className="flex flex-col-reverse md:flex-row flex-1 mt-14">
+      <div className="flex flex-1 flex-col justify-start md:justify-center items-center text-white gap-2 md:text-3xl md:m-0 md:font-medium md:gap-5">
+        <h1 className=""><span className="text-[#ff4500]">Connect</span> with your Loved Ones</h1>
+        <p>Cover a distance by Mern Connect</p>
+        <button className="bg-[#ff4500] rounded-md p-2 w-48 md:w-48 md:text-xl">Get Started</button>
       </div>
-       </div>
+      <div className="flex flex-1 justify-center items-center">
+        <img className="w-56 h-56 object-contain rounded-md md:w-96 md:h-96" src="landing_page_img.jpg"/>
+      </div>
     </div>
+   </div>
   )
 }

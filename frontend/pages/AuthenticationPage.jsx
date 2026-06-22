@@ -56,78 +56,80 @@ export default function AuthenticationPage() {
   return (
     <div className="page_container">
       <LandingNav/>
-    <div className="auth">
-      <div className="form_container">
-        <div className="authButtonContainer d-flex justify-content-center">
+    <div className="flex flex-1 flex-col justify-center items-center">
+      <div className="backdrop-blur-md bg-white/20 border border-white/20 rounded-2xl shadow-lg p-8 w-full max-w-md">
+        <div className="flex justify-center ">
           <button
-            className={formState ? "unactive" : "active"}
+            className={` flex flex-1 justify-center p-2 rounded-lg cursor-pointer ${formState? "text-black" : "text-white bg-[#800080]"}`}
             onClick={() => setFormState(0)}
           >
             SignUp
           </button>
           <button
-            className={formState ? "active" : "unactive"}
+            className={`flex flex-1 justify-center p-2 rounded-lg cursor-pointer ${formState ? "text-white bg-[#800080]" : "text-black"}`}
             onClick={() => setFormState(1)}
           >
             Login
           </button>
         </div>
 
-        <form>
-          {!formState ? (
-            <div class="form-floating mb-3">
-              <div class="">
-                <label for="formGroupExampleInput3" class="form-label">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="formGroupExampleInput3"
-                  name="fullname"
-                  value={fullname}
-                  onChange={e=>setFullName(e.target.value)}
-                />
-              </div>
-            </div>
-          ) : null}
+<form className="flex flex-col gap-4">
+  {!formState && (
+    <div>
+      <label htmlFor="fullname" className="block text-md  text-black mb-1">
+        Full Name
+      </label>
+      <input
+        type="text"
+        id="fullname"
+        name="fullname"
+        value={fullname}
+        onChange={(e) => setFullName(e.target.value)}
+        className="w-full px-2 py-2 rounded-md border border-gray-300 text-black bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+       
+      />
+    </div>
+  )}
 
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput"
-              name="username"
-               value={username}
-                  onChange={e=>setUserName(e.target.value)}
-            />
-          </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">
-              Password
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput2"
-              name="password"
-              value={password}
-              onChange={e=>setPassword(e.target.value)}
-            />
-          </div>
-          <div className="d-flex justify-content-center">
-            <button
-              type="submit"
-              class="submit"
-              onClick={!formState ? signup : login}
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+  <div>
+    <label htmlFor="username" className="block text-md text-black mb-1">
+      Username
+    </label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      value={username}
+      onChange={(e) => setUserName(e.target.value)}
+      className="w-full px-2 py-2 rounded-md border border-gray-300 text-black bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      
+    />
+  </div>
+
+  <div>
+    <label htmlFor="password" className="block text-md text-black mb-1">
+      Password
+    </label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="w-full px-2 py-2 rounded-md bg-transparent border border-gray-300 text-black bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+   
+    />
+  </div>
+
+  <button
+    type="submit"
+    onClick={!formState ? signup : login}
+    className="w-full py-2 mt-2 rounded-lg bg-[#ff4500] hover:bg-[#ff5b20] text-white font-semibold transition"
+  >
+    Submit
+  </button>
+</form>
+
       </div>
     </div>
      </div>

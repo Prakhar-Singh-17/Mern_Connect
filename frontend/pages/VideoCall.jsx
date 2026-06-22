@@ -20,7 +20,9 @@ import "../styles/videocall.css";
 
 const isLocal = window.location.hostname === "localhost";
 
-const server_url = isLocal? import.meta.env.VITE_BACKEND_URL_LOCAL : import.meta.env.VITE_BACKEND_URL_PROD;
+const server_url = isLocal
+  ? import.meta.env.VITE_BACKEND_URL_LOCAL
+  : import.meta.env.VITE_BACKEND_URL_PROD;
 let connections = {};
 
 const peerConfigConnections = {
@@ -265,11 +267,9 @@ export function VideoCall() {
   }
 
   let connectToSocketServer = () => {
+    console.log("Socket.IO server initializing...");
 
-     console.log("Socket.IO server initializing..."); 
-     
-socketRef.current = io.connect(server_url, { secure: false });
-
+    socketRef.current = io.connect(server_url, { secure: false });
 
     socketRef.current.on("signal", gotMessageFromServer);
 
@@ -517,7 +517,9 @@ socketRef.current = io.connect(server_url, { secure: false });
     <div>
       {askForUsername ? (
         <div className="meetPreviewContainer">
-        <h2 align="center" className="previewHeader">Enter into Lobby</h2>
+          <h2 align="center" className="previewHeader text-2xl font-semibold">
+            Enter into Lobby
+          </h2>
           <div className="previewCard">
             <div className="inputPart">
               <TextField
@@ -533,7 +535,12 @@ socketRef.current = io.connect(server_url, { secure: false });
             </div>
 
             <div>
-              <video className="userVideo" ref={localVideoRef} autoPlay muted></video>
+              <video
+                className="userVideo"
+                ref={localVideoRef}
+                autoPlay
+                muted
+              ></video>
             </div>
           </div>
         </div>
@@ -584,34 +591,47 @@ socketRef.current = io.connect(server_url, { secure: false });
             </div>
           ) : null}
 
-          <div className="bottomBar">
-            <div className="buttonContainer">
-              <IconButton style={{ color: "white" }} onClick={handleVideo}>
-                {video === true ? <VideocamIcon /> : <VideocamOffIcon />}
-              </IconButton>
-              <IconButton style={{ color: "white" }} onClick={handleAudio}>
-                {audio === true ? <MicIcon /> : <MicOffIcon />}
-              </IconButton>
-              <IconButton style={{ color: "white" }} onClick={handleScreen}>
-                {screenAvailable === true ? (
-                  <StopScreenShareIcon />
+          <div className="w-screen absolute bottom-4 flex justify-center items-center">
+            <div className="z-10 flex bg-black rounded-md gap-4">
+              <IconButton className="md:w-30 w-12" onClick={handleVideo}>
+                {video ? (
+                  <VideocamIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
                 ) : (
-                  <ScreenShareIcon />
+                  <VideocamOffIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
                 )}
               </IconButton>
+
+              <IconButton className="md:w-30 w-12" onClick={handleAudio}>
+                {audio ? (
+                  <MicIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
+                ) : (
+                  <MicOffIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
+                )}
+              </IconButton>
+
+              <IconButton className="md:w-30 w-12" onClick={handleScreen}>
+                {screenAvailable ? (
+                  <StopScreenShareIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
+                ) : (
+                  <ScreenShareIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
+                )}
+              </IconButton>
+
               <IconButton
-                style={{ color: "white" }}
+                className="md:w-30 w-12"
                 onClick={() => setShowModal(!showModal)}
               >
                 <Badge badgeContent={newMessages} color="primary">
-                  <MessageIcon />
+                  <MessageIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
                 </Badge>
               </IconButton>
+
               <IconButton
-                style={{ color: "white", backgroundColor: "red" }}
+                className="md:w-30 w-12"
+                sx={{ background: "darkred", borderRadius: 1 }}
                 onClick={handleCallDisconnect}
               >
-                <CallEndIcon />
+                <CallEndIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
               </IconButton>
             </div>
           </div>
