@@ -200,7 +200,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Important Links 🔗
 
-- **Live Demo:** [Link to Live Demo if available]
+- **Live Demo:** [Live Demo](https://mern-connect-d8he.onrender.com/)
 - **Author Profile:** [Prakhar Singh](https://github.com/Prakhar-Singh-17)
 
 ## Footer ❤️
@@ -208,7 +208,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Mern_Connect** is a project by [Prakhar Singh](https://github.com/Prakhar-Singh-17).
 
 - **Repository:** [Mern_Connect](https://github.com/Prakhar-Singh-17/Mern_Connect)
-- **Contact:** prakharsingh1703@gmail.com
+- **Contact:** iamprakharsingh@gmail.com
 
 Feel free to **fork**, **like**, and **star** the repository!
 
