@@ -4,8 +4,6 @@ A real-time video conferencing and chat application built with the MERN stack.
 
 ## Badges 🛡️
 
-| Badge | Status |
-|---|---||
 | Build Status | [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Prakhar-Singh-17/Mern_Connect/actions) |
 | Version | [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/Prakhar-Singh-17/Mern_Connect) |
 | License | [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) |
