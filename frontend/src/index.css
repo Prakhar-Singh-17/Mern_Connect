@@ -1,11 +1,12 @@
-@import "tailwindcss";
+ @import "tailwindcss";
 
 *{
+  overflow: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
 
-
+/* 
 .page_container{
   display: flex;
   flex-direction: column;
@@ -149,4 +150,4 @@ form label{
 
 .historyCard strong {
   color: #555;
-}
+} */ 

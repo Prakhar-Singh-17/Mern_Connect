@@ -514,134 +514,209 @@ export function VideoCall() {
   }
 
   return (
-    <div>
-      {askForUsername ? (
-        <div className="meetPreviewContainer">
-          <h2 align="center" className="previewHeader text-2xl font-semibold">
-            Enter into Lobby
-          </h2>
-          <div className="previewCard">
-            <div className="inputPart">
-              <TextField
-                id="outlined-basic"
-                label="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                variant="outlined"
-              />
-              <Button variant="contained" onClick={connect}>
-                Connect
-              </Button>
-            </div>
+  <div className="min-h-screen overflow-hidden bg-slate-950 text-white">
 
-            <div>
-              <video
-                className="userVideo"
-                ref={localVideoRef}
-                autoPlay
-                muted
-              ></video>
+    {askForUsername ? (
+      /* =========================
+         LOBBY / PREVIEW
+      ========================== */
+      <div className="flex min-h-screen items-center justify-center bg-slate-950 px-6 py-10">
+
+        {/* Background glow */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[130px]" />
+        </div>
+
+        <div className="relative w-full max-w-4xl">
+
+          {/* Header */}
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-sm font-medium text-indigo-400">
+              Mern Connect
+            </p>
+
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Enter into Lobby
+            </h1>
+
+            <p className="mt-2 text-sm text-slate-500">
+              Set your username and make sure your camera is ready.
+            </p>
+          </div>
+
+          {/* Preview Card */}
+          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/40 backdrop-blur-sm sm:p-6">
+
+            <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+
+              {/* Video Preview */}
+              <div className="relative aspect-video overflow-hidden rounded-2xl bg-black">
+                <video
+                  className="h-full w-full object-cover"
+                  ref={localVideoRef}
+                  autoPlay
+                  muted
+                />
+
+                {/* Camera label */}
+                <div className="absolute bottom-4 left-4 rounded-lg border border-white/10 bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                  Camera Preview
+                </div>
+              </div>
+
+              {/* Join Section */}
+              <div className="flex flex-col justify-center">
+
+                <div className="mb-6">
+                  <h2 className="text-lg font-semibold text-white">
+                    Ready to join?
+                  </h2>
+
+                  <p className="mt-1 text-sm leading-6 text-slate-500">
+                    Enter your name below before joining the meeting.
+                  </p>
+                </div>
+
+                <label
+                  htmlFor="username"
+                  className="mb-2 block text-sm font-medium text-slate-300"
+                >
+                  Username
+                </label>
+
+                <input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your name"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                />
+
+                <button
+                  type="button"
+                  onClick={connect}
+                  className="mt-4 w-full rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition-all hover:bg-indigo-500 active:scale-[0.98]"
+                >
+                  Join Meeting
+                </button>
+
+              </div>
             </div>
           </div>
         </div>
-      ) : (
-        <div className="meetView">
-          {showModal ? (
-            <div className="chatRoom">
-              <div className="chatHeader">
-                <h4 style={{ margin: 0 }}>Chat Room</h4>
-                <CloseIcon
-                  style={{ color: "black", cursor: "pointer" }}
-                  onClick={() => setShowModal(false)}
-                />
+      </div>
+
+    ) : (
+
+      /* =========================
+         MEETING ROOM
+      ========================== */
+      <div className="relative h-screen w-screen overflow-hidden bg-black">
+
+        {/* =========================
+            CHAT PANEL
+        ========================== */}
+        {showModal ? (
+          <div className="absolute right-4 top-4 z-30 flex h-[calc(100vh-120px)] w-[calc(100%-32px)] max-w-sm flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/50 sm:right-6 sm:top-6 sm:h-[calc(100vh-140px)]">
+
+            {/* Chat Header */}
+            <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+              <div>
+                <h4 className="text-sm font-semibold text-white">
+                  Chat
+                </h4>
+
+                <p className="mt-0.5 text-xs text-slate-500">
+                  Meeting messages
+                </p>
               </div>
-              <hr />
-              <div className="chats">
-                <div className="allMessages">
-                  {messages.map((item, index) => {
-                    return (
-                      <div key={index}>
-                        <p>
-                          <span style={{ fontWeight: "bold" }}>
-                            {item.sender}
-                          </span>{" "}
-                          : {item.data}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="chatBox">
-                  <TextField
-                    id="outlined-basic"
-                    placeholder="Type a message..."
-                    variant="outlined"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                  <Button
-                    style={{ height: "100%" }}
-                    variant="contained"
-                    onClick={sendMessage}
-                  >
-                    Send
-                  </Button>
-                </div>
-              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+              >
+                <CloseIcon sx={{ fontSize: 19 }} />
+              </button>
             </div>
-          ) : null}
 
-          <div className="w-screen absolute bottom-4 flex justify-center items-center">
-            <div className="z-10 flex bg-black rounded-md gap-4">
-              <IconButton className="md:w-30 w-12" onClick={handleVideo}>
-                {video ? (
-                  <VideocamIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                ) : (
-                  <VideocamOffIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                )}
-              </IconButton>
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto px-4 py-4">
+              {messages.length > 0 ? (
+                <div className="space-y-4">
+                  {messages.map((item, index) => (
+                    <div key={index}>
+                      <p className="text-xs font-semibold text-indigo-400">
+                        {item.sender}
+                      </p>
 
-              <IconButton className="md:w-30 w-12" onClick={handleAudio}>
-                {audio ? (
-                  <MicIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                ) : (
-                  <MicOffIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                )}
-              </IconButton>
+                      <p className="mt-1 break-words text-sm leading-6 text-slate-300">
+                        {item.data}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex h-full items-center justify-center text-center">
+                  <div>
+                    <p className="text-sm font-medium text-slate-400">
+                      No messages yet
+                    </p>
 
-              <IconButton className="md:w-30 w-12" onClick={handleScreen}>
-                {screenAvailable ? (
-                  <StopScreenShareIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                ) : (
-                  <ScreenShareIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                )}
-              </IconButton>
+                    <p className="mt-1 text-xs text-slate-600">
+                      Start the conversation.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
 
-              <IconButton
-                className="md:w-30 w-12"
-                onClick={() => setShowModal(!showModal)}
-              >
-                <Badge badgeContent={newMessages} color="primary">
-                  <MessageIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-                </Badge>
-              </IconButton>
+            {/* Chat Input */}
+            <div className="border-t border-slate-800 bg-slate-900 p-3">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20"
+                />
 
-              <IconButton
-                className="md:w-30 w-12"
-                sx={{ background: "darkred", borderRadius: 1 }}
-                onClick={handleCallDisconnect}
-              >
-                <CallEndIcon sx={{ color: "white", fontSize:{xs:18, md:26 } }} />
-              </IconButton>
+                <button
+                  type="button"
+                  onClick={sendMessage}
+                  className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+                >
+                  Send
+                </button>
+              </div>
             </div>
           </div>
+        ) : null}
 
-          <video className="myView" ref={localVideoRef} autoPlay muted />
-          <div className="conferenceView">
+        {/* =========================
+            LOCAL VIDEO
+        ========================== */}
+        <video
+          className="absolute bottom-24 right-4 z-20 h-28 w-44 rounded-xl border border-slate-700 bg-slate-900 object-cover shadow-2xl sm:bottom-28 sm:right-6 sm:h-36 sm:w-56"
+          ref={localVideoRef}
+          autoPlay
+          muted
+        />
+
+        {/* =========================
+            REMOTE VIDEOS
+        ========================== */}
+        <div className="flex h-full w-full items-center justify-center p-4 pb-24 sm:p-6 sm:pb-28">
+          <div className="grid h-full w-full auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {videos.map((video) => (
-              <div key={video.socketId}>
+              <div
+                key={video.socketId}
+                className="relative min-h-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900"
+              >
                 <video
-                  className="connectedUser"
+                  className="h-full w-full object-cover"
                   ref={(ref) => {
                     if (ref && video.stream) {
                       ref.srcObject = video.stream;
@@ -653,7 +728,92 @@ export function VideoCall() {
             ))}
           </div>
         </div>
-      )}
-    </div>
-  );
+
+        {/* =========================
+            CONTROL BAR
+        ========================== */}
+        <div className="absolute bottom-5 left-1/2 z-40 -translate-x-1/2">
+          <div className="flex items-center gap-1 rounded-2xl border border-slate-800 bg-slate-900/95 p-2 shadow-2xl shadow-black/60 backdrop-blur-xl sm:gap-2 sm:p-2.5">
+
+            {/* Video */}
+            <button
+              type="button"
+              onClick={handleVideo}
+              className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors sm:h-12 sm:w-12 ${
+                video
+                  ? "text-slate-300 hover:bg-slate-800 hover:text-white"
+                  : "bg-red-500/15 text-red-400 hover:bg-red-500/25"
+              }`}
+            >
+              {video ? (
+                <VideocamIcon sx={{ fontSize: 22 }} />
+              ) : (
+                <VideocamOffIcon sx={{ fontSize: 22 }} />
+              )}
+            </button>
+
+            {/* Audio */}
+            <button
+              type="button"
+              onClick={handleAudio}
+              className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors sm:h-12 sm:w-12 ${
+                audio
+                  ? "text-slate-300 hover:bg-slate-800 hover:text-white"
+                  : "bg-red-500/15 text-red-400 hover:bg-red-500/25"
+              }`}
+            >
+              {audio ? (
+                <MicIcon sx={{ fontSize: 22 }} />
+              ) : (
+                <MicOffIcon sx={{ fontSize: 22 }} />
+              )}
+            </button>
+
+            {/* Screen Share */}
+            <button
+              type="button"
+              onClick={handleScreen}
+              className="flex h-11 w-11 items-center justify-center rounded-xl text-slate-300 transition-colors hover:bg-slate-800 hover:text-white sm:h-12 sm:w-12"
+            >
+              {screenAvailable ? (
+                <StopScreenShareIcon sx={{ fontSize: 22 }} />
+              ) : (
+                <ScreenShareIcon sx={{ fontSize: 22 }} />
+              )}
+            </button>
+
+            {/* Chat */}
+            <button
+              type="button"
+              onClick={() => setShowModal(!showModal)}
+              className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors sm:h-12 sm:w-12 ${
+                showModal
+                  ? "bg-indigo-600 text-white"
+                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
+              }`}
+            >
+              <Badge badgeContent={newMessages} color="primary">
+                <MessageIcon sx={{ fontSize: 22 }} />
+              </Badge>
+            </button>
+
+            {/* Divider */}
+            <div className="mx-1 h-7 w-px bg-slate-700" />
+
+            {/* End Call */}
+            <button
+              type="button"
+              onClick={handleCallDisconnect}
+              className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-600 text-white transition-colors hover:bg-red-500 sm:h-12 sm:w-12"
+            >
+              <CallEndIcon sx={{ fontSize: 22 }} />
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    )}
+  </div>
+);
 }
